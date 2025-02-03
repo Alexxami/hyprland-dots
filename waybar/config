@@ -1,0 +1,67 @@
+{
+  "layer": "top",
+    "modules-left": ["custom/arch", "hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["backlight", "pulseaudio","bluetooth", "network", "battery", "custom/power-manager"],
+    "custom/arch": {
+      "format": "  ",
+      "tooltip": false,
+      "on-click": "wofi --x 20 --y 20"
+    },
+    "hyprland/workspaces": {
+      "format": "{name}",
+      "format": "{icon}",
+      "tooltip": false,
+      "all-outputs": true,
+      "format-icons": {
+        "active": "",
+        "default": ""
+
+      }
+    },
+    "clock": {
+      "format": "<span color='#a6e3a1'></span>{:%H:%M}",
+    },
+    "backlight": {
+      "device": "intel_backlight",
+      "format": "<span color='#a6e3a1'>{icon} {percent}%</span>",
+      "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+   "pulseaudio": {
+      "format": "<span color='#a6e3a1'>{icon}</span> {volume}%",
+      "format-muted": "󰝟 ",
+      "tooltip": false,
+      "format-icons": {
+        "headphone": "",
+        "default": " "
+      },
+      "scroll-step": 1,
+    },
+    "bluetooth": {
+      "format": "<span color='#a6e3a1'></span> {status}",
+      "format-disabled": "", // an empty format will hide the module
+      "format-connected": "<span color='#a6e3a1'></span> {num_connections}",
+      "tooltip-format": "{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}   {device_address}"
+    },
+    "network": {
+      "interface": "wlo1",
+      "format": "{ifname}",
+      "format-wifi": "<span color='#a6e3a1'> </span>{essid}",
+      "format-ethernet": "{ipaddr}/{cidr} ",
+      "format-disconnected": "<span color='#a6e3a1'>󰖪 </span>No Network",
+      "tooltip": false,
+    },
+    "battery": {
+      "format": "<span color='#a6e3a1'>{icon}</span> {capacity}%",
+      "format-icons": ["󰂎", "󱊡", "󱊢", "󱊣"],
+      "format-charging": "<span color='#a6e3a1'>󰂄</span> {capacity}%",
+      "tooltip": false,
+    },
+    "custom/power-manager": {
+      "format": "<span color='#f38ba8'> {icon} </span>",
+      "format-icons": [" 󰐥 "],
+      "tooltip": false,
+      "on-click": "sh ~/.config/wofi/menu.sh"
+    },
+}
